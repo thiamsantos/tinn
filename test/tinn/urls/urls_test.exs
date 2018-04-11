@@ -2,7 +2,7 @@ defmodule Tinn.UrlsTest do
   use Tinn.DataCase
 
   alias Faker.Internet
-  alias Tinn.Urls
+  alias Tinn.{Urls, Repo}
   alias Tinn.Urls.{Url, Encoder}
 
   def url_fixture(url) do

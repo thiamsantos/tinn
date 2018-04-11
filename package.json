@@ -4,7 +4,7 @@
   "description": "To start your Phoenix server:",
   "main": "index.js",
   "scripts": {
-    "precommit": "mix format && mix credo --strict && mix dialyzer && mix test",
+    "precommit": "mix format && mix credo --strict && mix test",
     "cm": "git-cz"
   },
   "repository": {

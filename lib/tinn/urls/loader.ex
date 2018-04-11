@@ -1,4 +1,7 @@
 defmodule Tinn.Urls.Loader do
+  @moduledoc """
+  Database data loader.
+  """
   alias Tinn.Repo
   alias Tinn.Urls.Queries
 

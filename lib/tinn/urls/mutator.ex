@@ -1,4 +1,7 @@
 defmodule Tinn.Urls.Mutator do
+  @moduledoc """
+  Database mutations.
+  """
   alias Tinn.Repo
   alias Tinn.Urls.Url
 

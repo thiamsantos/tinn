@@ -8,5 +8,8 @@ defmodule TinnWeb.Router do
 
   scope "/api", TinnWeb do
     pipe_through :api
+
+    get "/urls/:hash", UrlController, :show
+    post "/urls", UrlController, :create
   end
 end

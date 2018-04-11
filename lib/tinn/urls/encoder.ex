@@ -1,5 +1,9 @@
 defmodule Tinn.Urls.Encoder do
-  use CustomBase, '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  @moduledoc """
+  URL safe encoder.
+  """
+  @chars '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  use CustomBase, @chars
 
   @doc """
   Encode base 10 integer to an url hash.

@@ -1,4 +1,7 @@
 defmodule Tinn.Urls.Url do
+  @moduledoc """
+  URL schema.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

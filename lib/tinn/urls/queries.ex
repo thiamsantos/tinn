@@ -1,4 +1,7 @@
 defmodule Tinn.Urls.Queries do
+  @moduledoc """
+  Database queries.
+  """
   import Ecto.Query, warn: false
 
   alias Tinn.Urls.Url
