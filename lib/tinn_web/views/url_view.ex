@@ -8,4 +8,8 @@ defmodule TinnWeb.UrlView do
   def render("show.json", %{url: url}) do
     %{url: url}
   end
+
+  def render("hits.json", %{count: count, hits: hits}) do
+    %{count: count, hits: hits}
+  end
 end

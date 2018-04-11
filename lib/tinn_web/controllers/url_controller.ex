@@ -19,4 +19,11 @@ defmodule TinnWeb.UrlController do
       |> render("show.json", url: url)
     end
   end
+
+  def hits(conn, %{"hash" => hash}) do
+    with {:ok, hits} <- Urls.get_hits(hash) do
+      conn
+      |> render("hits.json", hits)
+    end
+  end
 end

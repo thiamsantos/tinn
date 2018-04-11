@@ -55,4 +55,20 @@ defmodule Tinn.UrlsTest do
       assert actual === expected
     end
   end
+
+  describe "get_hits/1" do
+    test "should return the total of hits and a list of the accesses" do
+      url = Internet.url()
+      {:ok, hash} = Urls.shorten(url)
+
+      Urls.get_url(hash)
+      Urls.get_url(hash)
+      Urls.get_url(hash)
+
+      {:ok, response} = Urls.get_hits(hash)
+
+      assert response.count === 3
+      assert length(response.hits) === 3
+    end
+  end
 end

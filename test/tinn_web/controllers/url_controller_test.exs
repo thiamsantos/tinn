@@ -56,4 +56,21 @@ defmodule TinnWeb.UrlControllerTest do
       assert actual === expected
     end
   end
+
+  describe "hits" do
+    test "should return the total of hits", %{conn: conn} do
+      url = Internet.url()
+      {:ok, hash} = Urls.shorten(url)
+
+      Urls.get_url(hash)
+      Urls.get_url(hash)
+      Urls.get_url(hash)
+
+      conn = get conn, url_path(conn, :hits, hash)
+      actual = json_response(conn, 200)
+
+      assert actual["count"] === 3
+      assert length(actual["hits"]) === 3
+    end
+  end
 end
