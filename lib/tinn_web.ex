@@ -27,6 +27,10 @@ defmodule TinnWeb do
 
   def view do
     quote do
+      use Phoenix.View,
+        root: "lib/phxdemo_web/templates",
+        namespace: PhxdemoWeb
+
       import TinnWeb.Router.Helpers
     end
   end

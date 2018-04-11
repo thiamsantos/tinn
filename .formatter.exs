@@ -28,7 +28,7 @@ locals_without_parens = [
 ]
 
 [
-  inputs: ["mix.exs", "{config,lib,test}/**/*.{ex,exs}"],
+  inputs: ["mix.exs", "{config,lib,test,priv}/**/*.{ex,exs}"],
   locals_without_parens: locals_without_parens,
   import_deps: [:ecto, :plug, :phoenix]
 ]
