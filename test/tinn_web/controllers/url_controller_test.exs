@@ -2,11 +2,11 @@ defmodule TinnWeb.UrlControllerTest do
   use TinnWeb.ConnCase
 
   alias Faker.Internet
-  alias Tinn.{Urls, Repo}
-  alias Tinn.Urls.{Url, Encoder}
+  alias Tinn.Repo
+  alias Tinn.Urls.{Url, Encoder, Shorten, GetUrl}
 
   def url_fixture(url) do
-    {:ok, hash} = Urls.Shorten.call(url)
+    {:ok, hash} = Shorten.call(url)
     hash
   end
 
@@ -60,11 +60,11 @@ defmodule TinnWeb.UrlControllerTest do
   describe "hits" do
     test "should return the total of hits", %{conn: conn} do
       url = Internet.url()
-      {:ok, hash} = Urls.Shorten.call(url)
+      {:ok, hash} = Shorten.call(url)
 
-      Urls.GetUrl.call(hash)
-      Urls.GetUrl.call(hash)
-      Urls.GetUrl.call(hash)
+      GetUrl.call(hash)
+      GetUrl.call(hash)
+      GetUrl.call(hash)
 
       conn = get conn, url_path(conn, :hits, hash)
       actual = json_response(conn, 200)
