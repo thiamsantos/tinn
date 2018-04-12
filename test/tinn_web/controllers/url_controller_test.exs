@@ -6,7 +6,7 @@ defmodule TinnWeb.UrlControllerTest do
   alias Tinn.Urls.{Url, Encoder}
 
   def url_fixture(url) do
-    {:ok, hash} = Urls.shorten(url)
+    {:ok, hash} = Urls.Shorten.call(url)
     hash
   end
 
@@ -60,11 +60,11 @@ defmodule TinnWeb.UrlControllerTest do
   describe "hits" do
     test "should return the total of hits", %{conn: conn} do
       url = Internet.url()
-      {:ok, hash} = Urls.shorten(url)
+      {:ok, hash} = Urls.Shorten.call(url)
 
-      Urls.get_url(hash)
-      Urls.get_url(hash)
-      Urls.get_url(hash)
+      Urls.GetUrl.call(hash)
+      Urls.GetUrl.call(hash)
+      Urls.GetUrl.call(hash)
 
       conn = get conn, url_path(conn, :hits, hash)
       actual = json_response(conn, 200)
