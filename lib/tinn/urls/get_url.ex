@@ -3,11 +3,10 @@ defmodule Tinn.Urls.GetUrl do
   Gets a single url with a given hash.
   """
   use Tinn.Service
-  alias Tinn.Urls.{Encoder, Loader, Mutator}
+  alias Tinn.Urls.{CachedLoader, Mutator}
 
   def run(hash) when is_binary(hash) do
-    with {:ok, id} <- Encoder.decode(hash),
-         {:ok, url} <- Loader.get_one(id),
+    with {:ok, url} <- CachedLoader.get_url(hash),
          {:ok, _hit} <- Mutator.hit(url.id) do
       {:ok, url.target}
     end

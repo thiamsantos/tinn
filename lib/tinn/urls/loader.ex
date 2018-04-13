@@ -12,10 +12,7 @@ defmodule Tinn.Urls.Loader do
     |> handle_get_one()
   end
 
-  defp handle_get_one(url) when is_nil(url) do
-    {:error, :shortened_url_not_found}
-  end
-
+  defp handle_get_one(nil), do: {:error, :shortened_url_not_found}
   defp handle_get_one(url), do: {:ok, url}
 
   def get_hits(url_id) do
@@ -31,9 +28,6 @@ defmodule Tinn.Urls.Loader do
     |> handle_count_hits()
   end
 
-  def handle_count_hits(count) when is_nil(count) do
-    {:error, :shortened_url_not_found}
-  end
-
-  def handle_count_hits(count), do: {:ok, count}
+  defp handle_count_hits(nil), do: {:error, :shortened_url_not_found}
+  defp handle_count_hits(count), do: {:ok, count}
 end

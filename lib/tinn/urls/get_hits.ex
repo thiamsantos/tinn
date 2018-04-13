@@ -4,7 +4,7 @@ defmodule Tinn.Urls.GetHits do
   """
   use Tinn.Service
 
-  alias Tinn.Urls.{Encoder, Loader, Mutator}
+  alias Tinn.Urls.{Encoder, Loader}
 
   def run(hash) when is_binary(hash) do
     with {:ok, id} <- Encoder.decode(hash),

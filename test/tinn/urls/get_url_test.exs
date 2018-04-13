@@ -2,7 +2,7 @@ defmodule Tinn.GetUrlTest do
   use Tinn.DataCase
 
   alias Faker.Internet
-  alias Tinn.Urls.{Encoder, GetUrl, Shorten}
+  alias Tinn.Urls.{Encoder, GetUrl, Shorten, Cache}
 
   def url_fixture(url) do
     {:ok, hash} = Shorten.call(url)
@@ -16,6 +16,19 @@ defmodule Tinn.GetUrlTest do
 
       actual = GetUrl.call(hash)
       expected = {:ok, url}
+
+      assert actual == expected
+    end
+
+    test "get_url should cache the results" do
+      url = Internet.url()
+      hash = url_fixture(url)
+      {:ok, id} = Encoder.decode(hash)
+
+      actual = GetUrl.call(hash)
+      expected = {:ok, url}
+
+      assert Cache.get_url(hash) === {:ok, %{id: id, target: url}}
 
       assert actual == expected
     end

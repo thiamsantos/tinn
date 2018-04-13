@@ -38,4 +38,9 @@ defmodule TinnWeb.ConnCase do
 
     {:ok, conn: ConnTest.build_conn()}
   end
+
+  setup do
+    {:ok, _key_number} = Cachex.clear(:tinn_cache)
+    :ok
+  end
 end

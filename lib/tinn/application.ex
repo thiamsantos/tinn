@@ -13,7 +13,8 @@ defmodule Tinn.Application do
     # Define workers and child supervisors to be supervised
     children = [
       supervisor(Tinn.Repo, []),
-      supervisor(Endpoint, [])
+      supervisor(Endpoint, []),
+      worker(Cachex, [:tinn_cache, []])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

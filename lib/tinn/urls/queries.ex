@@ -7,11 +7,15 @@ defmodule Tinn.Urls.Queries do
   alias Tinn.Urls.{Url, Hit}
 
   def one_by_id(id) do
-    from u in Url, where: u.id == ^id
+    from u in Url,
+      where: u.id == ^id,
+      select: [:id, :target]
   end
 
   def hits_by_url(url_id) do
-    from h in Hit, where: h.url_id == ^url_id, select: h.inserted_at
+    from h in Hit,
+      where: h.url_id == ^url_id,
+      select: h.inserted_at
   end
 
   def count_hits_by_url(url_id) do

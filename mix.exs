@@ -45,7 +45,8 @@ defmodule Tinn.Mixfile do
       {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
       {:custom_base, "~> 0.2.1"},
       {:faker, "~> 0.10.0"},
-      {:jason, "~> 1.0"}
+      {:jason, "~> 1.0"},
+      {:cachex, "~> 3.0"}
     ]
   end
 
